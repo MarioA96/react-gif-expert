@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { PropTypes } from "prop-types";
 
 //Recibimos el props setCategories del GifExpertApp para poder agregar un nuevo elemento
 export const AddCategory = ( { onNewCategory } ) => {
@@ -10,6 +11,7 @@ export const AddCategory = ( { onNewCategory } ) => {
     };
 
     const onSubmit = (event) => {
+        // console.log('Hola mundo desde onSubmit');
         event.preventDefault();
         if (inputValue.trim().length <= 2) return;
         
@@ -21,7 +23,7 @@ export const AddCategory = ( { onNewCategory } ) => {
     };
 
     return (
-        <form onSubmit={ (event) => onSubmit(event) }>
+        <form onSubmit={ (event) => onSubmit(event) } aria-label="form" >
             <input 
                 type="text"
                 placeholder="Buscar gifs..."
@@ -33,3 +35,8 @@ export const AddCategory = ( { onNewCategory } ) => {
         </form>
     )
 }
+
+
+AddCategory.propTypes = {
+    onNewCategory: PropTypes.func.isRequired,
+};
